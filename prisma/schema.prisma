@@ -13,24 +13,24 @@ datasource db {
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
-  password     String
+  password     String?
+  profile_url     String?
   name         String?
   phone_number String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  Message      Message[]
 
   @@map("users")
 }
 
-model Character {
+model Message {
   id         Int       @id @default(autoincrement())
-  name       String
-  date_birth DateTime?
-  image      String?
-  weight     Float?
-  history    String?
+  message    String
+  user_id    Int
+  User       User      @relation(fields: [user_id], references: [id])
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  @@map("characters")
+  @@map("messages")
 }
