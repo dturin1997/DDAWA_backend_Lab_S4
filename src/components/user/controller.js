@@ -5,13 +5,17 @@ import Pusher from "pusher";
 const prisma = new PrismaClient();
 
 const pusher = new Pusher({
-    appId: "app-id",
-    key: "key",
-    secret: "secret",
+    appId: "1481272",
+    key: "2a33b7fb332b3a310bc1",
+    secret: "e591a8b6b0c2d7138746",
     cluster: "us2",
-    useTLS: true,
-});
-
+    useTLS: true
+  });
+ /* 
+  pusher.trigger("my-channel", "my-event", {
+    message: "hello world"
+  });
+*/
 export const findAll = async (_req, res) => {
     try {
         const users = await prisma.user.findMany();
