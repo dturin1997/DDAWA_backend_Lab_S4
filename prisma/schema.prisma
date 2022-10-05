@@ -28,7 +28,8 @@ model Message {
   id         Int       @id @default(autoincrement())
   message    String
   user_id    Int
-  User       User      @relation(fields: [user_id], references: [id])
+  sender_id  Int
+  User       User      @relation(fields: [sender_id], references: [id])
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
